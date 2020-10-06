@@ -9,29 +9,7 @@
     <input type="text" formControlName="lastName">
   </label>
 
-  <div formGroupName="address">
-    <h3>Address</h3>
-
-    <label>
-      Street:
-      <input type="text" formControlName="street">
-    </label>
-
-    <label>
-      City:
-      <input type="text" formControlName="city">
-    </label>
-    
-    <label>
-      State:
-      <input type="text" formControlName="state">
-    </label>
-
-    <label>
-      Zip Code:
-      <input type="text" formControlName="zip">
-    </label>
-  </div>
+  <app-address [parentFormGroup]="profileForm" #address></app-address>
 
   <div formArrayName="aliases">
     <h3>Aliases</h3> <button (click)="addAlias()">Add Alias</button>
@@ -58,6 +36,13 @@
 
 <p>
   Form Status: {{ profileForm.status }}
+</p>
+
+<p>
+  Address isValid: {{ address.isValid }}
+</p>
+<p>
+  Address isDirty: {{ address.isDirty }}
 </p>
 
 <p>
