@@ -8,7 +8,7 @@ export type EditorType = 'name' | 'profile';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  editor: EditorType = 'name';
+  editor: EditorType = 'profile';
 
   get showNameEditor() {
     return this.editor === 'name';
