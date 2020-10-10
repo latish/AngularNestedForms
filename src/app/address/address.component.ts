@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ControlContainer, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-address',
@@ -7,26 +7,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./address.component.css']
 })
 export class AddressComponent implements OnInit {
-  @Input() parentFormGroup: FormGroup;
+  parentFormGroup: FormGroup;
+  addressFormGroup: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private parentControl: ControlContainer) {
+  }
 
   ngOnInit(): void {
-    this.parentFormGroup.addControl('address', this.fb.group({
+    this.parentFormGroup = this.parentControl.control as FormGroup;
+    this.addressFormGroup = this.fb.group({
       street: ['', Validators.required],
       city: [''],
       state: [''],
       zip: ['']
-    }));
+    });
+    this.parentFormGroup.addControl('address', this.addressFormGroup);
   }
 
 
   public get isValid(): boolean {
-    return this.parentFormGroup.controls.address.valid;
+    return this.addressFormGroup.valid;
   }
 
   public get isDirty(): boolean {
-    return this.parentFormGroup.controls.address.dirty;
+    return this.addressFormGroup.dirty;
   }
 
 }
