@@ -8,25 +8,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddressComponent implements OnInit {
   @Input() parentFormGroup: FormGroup;
+  addressFormGroup: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.parentFormGroup.addControl('address', this.fb.group({
+    this.addressFormGroup = this.fb.group({
       street: ['', Validators.required],
       city: [''],
       state: [''],
       zip: ['']
-    }));
+    });
+    this.parentFormGroup.addControl('address', this.addressFormGroup);
   }
 
 
   public get isValid(): boolean {
-    return this.parentFormGroup.controls.address.valid;
+    return this.addressFormGroup.valid;
   }
 
   public get isDirty(): boolean {
-    return this.parentFormGroup.controls.address.dirty;
+    return this.addressFormGroup.dirty;
   }
 
 }
