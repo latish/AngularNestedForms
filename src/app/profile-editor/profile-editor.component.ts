@@ -12,6 +12,7 @@ export class ProfileEditorComponent {
   profileForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: [''],
+    address: [],
     aliases: this.fb.array([
       this.fb.control('')
     ])
@@ -22,7 +23,6 @@ export class ProfileEditorComponent {
   }
 
   constructor(private fb: FormBuilder) { }
-
 
   updateProfile() {
     this.profileForm.patchValue({

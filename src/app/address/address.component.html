@@ -1,25 +1,23 @@
-<ng-container [formGroup]="parentFormGroup">
-  <div formGroupName="address">
-    <h3>Address</h3>
+<div [formGroup]="addressFormGroup">
+  <h3>Address</h3>
 
-    <label>
-      Street:
-      <input type="text" formControlName="street">
-    </label>
+  <label>
+    Street:
+    <input type="text" formControlName="street">
+  </label>
 
-    <label>
-      City:
-      <input type="text" formControlName="city">
-    </label>
+  <label>
+    City:
+    <input type="text" formControlName="city">
+  </label>
 
-    <label>
-      State:
-      <input type="text" formControlName="state">
-    </label>
+  <label>
+    State:
+    <input type="text" formControlName="state">
+  </label>
 
-    <label>
-      Zip Code:
-      <input type="text" formControlName="zip">
-    </label>
-  </div>
-</ng-container>
+  <label>
+    Zip Code:
+    <input type="text" formControlName="zip">
+  </label>
+</div>
